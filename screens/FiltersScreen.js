@@ -45,6 +45,10 @@ const FiltersScreen = props => {
 		navigation.setParams({ save: saveFilters })
 	}, [saveFilters])
 
+	useEffect(() => {
+		saveFilters()
+	}, [isGlutenFree, isLactoseFree, isVegan, isVegetarian])
+
 	return (
 		<View style={styles.screen}>
 			<Text style={styles.title}>Available FIlters</Text>
@@ -86,15 +90,15 @@ FiltersScreen.navigationOptions = navData => {
 				/>
 			</HeaderButtons>
 		),
-		headerRight: () => (
-			<HeaderButtons HeaderButtonComponent={HeaderButton}>
-				<Item
-					title='save'
-					iconName='ios-save'
-					onPress={navData.navigation.getParam('save')}
-				/>
-			</HeaderButtons>
-		),
+		// headerRight: () => (
+		// 	<HeaderButtons HeaderButtonComponent={HeaderButton}>
+		// 		<Item
+		// 			title='save'
+		// 			iconName='ios-save'
+		// 			onPress={navData.navigation.getParam('save')}
+		// 		/>
+		// 	</HeaderButtons>
+		// ),
 	}
 }
 
